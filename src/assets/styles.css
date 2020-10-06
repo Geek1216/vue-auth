@@ -1,3 +1,9 @@
 a {
 	text-decoration: none;
 }
+.full-height {
+	height: 100vh;
+}
+.v-main__wrap {
+	background: #d3d3d3;
+}
