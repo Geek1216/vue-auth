@@ -1,6 +1,15 @@
+<style scoped>
+  .page-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+  }
+</style>
 <template>
-  <div>
-    page not found
+  <div class="page-wrapper">
+    404
   </div>
 </template>
 

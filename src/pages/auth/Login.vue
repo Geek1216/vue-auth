@@ -19,6 +19,14 @@
       >
         <v-card-title>Login</v-card-title>
         <v-card-text>
+          <v-alert
+            dense
+            outlined
+            type="error"
+            v-if="error"
+          >
+            {{ error }}
+          </v-alert>
           <v-form
             ref="form"
             v-model="valid"
@@ -41,15 +49,17 @@
 
           </v-form>
         </v-card-text>
-        <v-card-actions>
-            <v-btn
-              :disabled="!valid"
-              color="success"
-              class="ml-auto"
-              @click="submit"
-            >
-              Submit
-            </v-btn>
+        <v-card-actions class="justify-end align-end">
+          <router-link to="/signup">Not registered yet?</router-link>
+          <v-btn
+            :disabled="!valid"
+            color="success"
+            class="ml-2"
+            :loading="button_loading"
+            @click="submit"
+          >
+            Submit
+          </v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -57,6 +67,10 @@
 </template>
 
 <script>
+import {
+  mapState, mapActions 
+} from 'vuex';
+
 export default {
   data() {
     return {
@@ -74,13 +88,22 @@ export default {
         ],
     };
   },
-  // computed: mapState({
-  // }),
+  computed: mapState({
+    error: state => state.auth.error,
+    button_loading: state => state.auth.button_loading
+  }),
   mounted() {
   },
   methods: {
-    submit() {
+    ...mapActions([
+      'LOGIN',
+    ]),
 
+    submit() {
+      this.LOGIN({
+        email: this.email,
+        password: this.password
+      });
     }
   }
 };

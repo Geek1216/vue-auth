@@ -2,11 +2,11 @@ import VueRouter from 'vue-router';
 
 let routes = [
   {
-    name: 'Home',
+    name: 'home',
     path: '/',
     component: require('./pages/Home.vue').default,
     meta: {
-        title: 'Home',
+      title: 'Home',
     }
   },
   {
@@ -14,9 +14,9 @@ let routes = [
     path: '/login',
     component: require('./pages/auth/Login.vue').default,
     meta: {
-        userNotAuth: true,
-        title: 'Login',
-        layout: 'plain'
+      userNotAuth: true,
+      title: 'Login',
+      layout: 'plain'
     }
   },
   {
@@ -24,9 +24,9 @@ let routes = [
     path: '/signup',
     component: require('./pages/auth/Signup.vue').default,
     meta: {
-        userNotAuth: true,
-        title: 'Signup',
-        layout: 'plain'
+      userNotAuth: true,
+      title: 'Signup',
+      layout: 'plain'
     }
   },
   {
@@ -34,18 +34,25 @@ let routes = [
     path: '/about-us',
     component: require('./pages/AboutUs.vue').default,
     meta: {
-        allAuth: true,
-        title: 'About Us',
+      title: 'About Us',
+    }
+  },{
+    name: 'profile',
+    path: '/me',
+    component: require('./pages/Profile.vue').default,
+    meta: {
+      userAuth: true,
+      title: 'Profile',
     }
   },
   {
-      name: '404',
-      path: '*',
-      component: require('./pages/errors/PageNotFound.vue').default,
-      meta: {
-          title: 'Not Found',
-          layout: 'plain'
-      }
+    name: '404',
+    path: '*',
+    component: require('./pages/errors/PageNotFound.vue').default,
+    meta: {
+      title: 'Not Found',
+      layout: 'plain'
+    }
   },
 ];
 
